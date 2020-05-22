@@ -1,7 +1,7 @@
-# dumi library
+# dhook library
 
 ## Getting Started
-
+to do
 Install dependencies,
 
 ```bash
