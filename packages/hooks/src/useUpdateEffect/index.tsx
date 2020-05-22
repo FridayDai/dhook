@@ -1,6 +1,6 @@
-import React, { DependencyList, useEffect, useRef } from 'react';
+import React, { useEffect, useRef} from 'react';
 
-const useUpdateEffect = (fn: () => any, dep: DependencyList) => {
+const useUpdateEffect = (fn: () => any, dep: []) => {
   const ref = useRef<boolean>(false);
 
   useEffect(() => {

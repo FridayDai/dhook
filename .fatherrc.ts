@@ -1,7 +1,9 @@
 export default {
-  esm: {
-    type: 'rollup',
-    mjs: true, // 给浏览器用的mjs <script type="module" src="XXX.mjs" />
+  esm: 'babel',
+  cjs: 'babel',
+  disableTypeCheck: true,
+  preCommit: {
+    eslint: true,
+    prettier: true
   },
-  cjs: 'rollup',
 };

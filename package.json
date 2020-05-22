@@ -2,26 +2,15 @@
   "private": true,
   "name": "dhook",
   "scripts": {
+    "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
+    "clean": "lerna clean --yes",
+    "bootstrap": "lerna bootstrap",
     "start": "dumi dev",
     "docs:build": "dumi build",
     "build": "father-build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
   },
   "dependencies": {},
   "devDependencies": {

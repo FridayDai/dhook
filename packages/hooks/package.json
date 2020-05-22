@@ -2,13 +2,20 @@
   "name": "@dhook/hooks",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "yi.dai",
   "license": "ISC",
-
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "package.json"
+  ],
   "peerDependencies": {
     "react": "^16.13.1"
   }
