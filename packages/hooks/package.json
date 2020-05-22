@@ -20,7 +20,7 @@
     "react": "^16.13.1"
   },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://registry.npmjs.com/"
   },
-  "gitHead": "fc34b604ac6a2cc331df3e1eb2a1a134cc8830f5"
+  "gitHead": "eeac7d5eb22e14b81f56517fe2a99ee25ebd8d2e"
 }
