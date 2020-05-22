@@ -4,6 +4,6 @@ export default {
   disableTypeCheck: true,
   preCommit: {
     eslint: true,
-    prettier: true
+    prettier: true,
   },
 };

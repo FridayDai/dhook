@@ -1,7 +1,7 @@
 export default {
   umd: {
     globals: {
-      'react': 'React',
+      react: 'React',
     },
   },
 };
