@@ -19,5 +19,8 @@
   "peerDependencies": {
     "react": "^16.13.1"
   },
-  "gitHead": "0de35d927726d529e57e7be80cab616393a2ab61"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "fc34b604ac6a2cc331df3e1eb2a1a134cc8830f5"
 }
