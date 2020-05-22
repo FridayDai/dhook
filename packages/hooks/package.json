@@ -1,5 +1,5 @@
 {
-  "name": "@dhook/hooks",
+  "name": "dhook",
   "version": "0.0.6",
   "description": "",
   "scripts": {
@@ -20,7 +20,7 @@
     "react": "^16.13.1"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "access": "public"
   },
-  "gitHead": "4d8a8764292c422d8b87f3cd6cad777bb4edcea4"
+  "gitHead": "55fd70f3fd7737bbb4bae43bc2506d2ea2d00adc"
 }
