@@ -5,6 +5,7 @@
     "init": "rm -rf node_modules && npm install && npm run clean && npm run bootstrap && npm run build",
     "clean": "lerna clean --yes",
     "bootstrap": "lerna bootstrap",
+    "dev": "dumi dev",
     "start": "dumi dev",
     "docs:build": "dumi build",
     "build": "father-build",
