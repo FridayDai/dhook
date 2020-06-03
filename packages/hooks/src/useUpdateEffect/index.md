@@ -1,11 +1,11 @@
 ---
 title: useUpdateEffect
+toc: false
 nav:
-  title: Components
-  path: /components
+  title: Hook
+  path: /hooks
 group:
   title: groupB
-  path: /useUpdateEffect
 ---
 
 ### useUpdateEffect

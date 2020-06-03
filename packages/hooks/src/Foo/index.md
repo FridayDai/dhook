@@ -1,11 +1,11 @@
 ---
 title: Foo
+toc: false
 nav:
-  title: Components
-  path: /components
+  title: Hook
+  path: /hooks
 group:
   title: groupA
-  path: /Foo
 ---
 
 ## Foo
@@ -14,7 +14,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from '@dhook/hooks';
+import { Foo } from 'dhook';
 
 export default () => <Foo title="First Demo" />;
 ```

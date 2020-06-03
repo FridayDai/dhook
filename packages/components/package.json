@@ -1,0 +1,25 @@
+{
+  "name": "dcomponent",
+  "version": "1.0.0",
+  "description": "A component lib for dcomponent",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "yi.dai",
+  "license": "MIT"
+}
