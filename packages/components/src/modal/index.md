@@ -1,5 +1,5 @@
 ---
-title: Button
+title: Modal
 toc: false
 nav:
   title: Component
@@ -9,4 +9,8 @@ group:
   path: /basic  
 ---
 
-## Button Test
+## Modal
+
+基本用法 
+
+<code src="./demo/demo.jsx" />
