@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // 算法相关
+  // 1. 单链表翻转
+  function reverseList(head) {
+    if(!head) {
+      return null;
+    }
+    let pre = null;
+    let next;
+    while(!head) {
+      next = head.next;
+      head.next = pre;
+      pre = head;
+      head = next;
+    }
+
+    return pre;
+  }
+
+  // 递归
+  var list = {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: {
+          value:4,
+          next: null
+        }
+      }
+    }
+  };
+
+  function reverse(head) {
+    if (head.next == null) return head;
+    const last = reverse(head.next);
+    head.next.next = head;
+    head.next = null;
+    return last;
+  }
+
+  function getLastTwo(head) {
+    while(head) {
+      if(!head) return null;
+
+      if(head.next && !head.next.next) {
+        return head;
+      }
+
+      head = head.next;
+    }
+  }
+
+  const node = getLastTwo(list);
+  console.log(node);
+
+  // 2.1 反转链表前n项 https://leetcode-cn.com/problems/reverse-linked-list-ii/solution/bu-bu-chai-jie-ru-he-di-gui-di-fan-zhuan-lian-biao/
+  let successor;
+  function reverseN(head, n) {
+    if(n === 1) {
+      successor = head.next;
+      return head;
+    }
+    const last = reverseN(head.next, n - 1);
+    head.next.next = head;
+    head.next = successor;
+
+    return last;
+  }
+  // 2.2 反转链表[m, n] 1<= m < n < arr.length
+  function reverseBetween(head, m, n) {
+    if(m === 1) {
+      return reverseN(head, n);
+    }
+
+    head.next = reverseBetween(head.next, m - 1, n - 1);
+    return head;
+  }
+
+  // 回溯法 全排列
+  function permute(arr) {
+    const res = [];
+    const stack = [];
+    const length = arr.length;
+
+    function backtrace(res, stack, n) {
+      if(n === length) {
+
+      }
+    }
+    backtrace();
+
+
+
+  }
+
+  // 动态规划
+
+  // 树的遍历
+
+</script>
+</body>
+</html>
