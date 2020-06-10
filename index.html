@@ -24,7 +24,17 @@
     return pre;
   }
 
-  // 递归
+  class LinkListFramework {
+    reverse(head) {
+      if(!head.next) return head;
+      const last = this.reverse(head.next);
+      head.next.next = head;
+      head.next = null;
+      return last;
+    }
+  }
+
+  //
   var list = {
     value: 1,
     next: {
@@ -104,7 +114,122 @@
 
   // 动态规划
 
-  // 树的遍历
+  // 树的遍历 https://github.com/labuladong/fucking-algorithm/blob/master/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4%E7%B3%BB%E5%88%97/%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E7%9A%84%E9%AB%98%E6%95%88%E6%96%B9%E6%B3%95.md
+  // https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%93%8D%E4%BD%9C%E9%9B%86%E9%94%A6.md
+  const arr = [6, 7, 8, 9, 1, 2, 3, 4, 5];
+  class Node{
+    constructor(value) {
+      this.value = value;
+    }
+  }
+
+  function insertIntoBST(node, value) {
+    if(!node) return new Node(value);
+
+    if(value > node.value) {
+      node.right = insertIntoBST(node.right, value);
+    }
+    if(value < node.value) {
+      node.left = insertIntoBST(node.left, value);
+    }
+    return node;
+  }
+  let tree = null;
+  for(const item of arr) {
+    insertIntoBST(tree, item);
+  }
+
+  const dep1 = minDepthBST(tree);
+  const dep2 = maxDepthBST(tree);
+  console.log(`min: ${dep1}, max: ${dep2}`);
+  class TreeFramework {
+    node;
+
+    // 二叉树遍历框架
+    traverse(node) {
+      // 前序遍历
+      this.traverse(node.left);
+      // 中序遍历
+      this.traverse(node.right);
+      // 后序遍历
+    }
+
+    traverse2(node) {
+      const queue = [];
+      queue.push(node);
+
+      while(queue.length !== 0) {
+        const currentNode = queue.shift();
+        queue.push(currentNode.left);
+        queue.push(currentNode.right);
+      }
+    }
+
+
+    // 多叉树遍历框架
+    traverseForN(node) {
+      for (const child of node.children) {
+        this.traverseForN(child);
+      }
+    }
+
+    // BST处理框架
+    dealBST(node, value) {
+      if(!node) {
+        // 处理为空情况及递归为空的情况
+        return;
+      }
+      if(value < node.value) {
+        // 递归处理左节点
+        this.dealBST(node.left, value);
+      }
+      if(value > node.value) {
+        // 递归处理右节点
+        this.dealBST(node.right, value);
+      }
+      return node;
+    }
+  }
+
+  // 两颗树是否相等
+  function isEqualTree(node1, node2) {
+    if(!node1 && !node2) return true;
+    if(!node1 || !node2) return false;
+    if(node1.value !== node2.value) return false;
+
+    return isEqualTree(node1.left, node2.left) && isEqualTree(node1.right, node2.right);
+  }
+
+  // 判断二叉树中是否有值
+  function isInBST(node, target) {
+    if(node === null) return false;
+    if(node.value === target) return true;
+
+    if(target > node.value) return isInBST(node.right, target);
+    if(target < node.value) return isInBST(node.left, target);
+  }
+
+  //
+  function maxDepthBST(node) {
+    if(!node) return 0;
+
+    const left = maxDepthBST(node.left);
+    const right = maxDepthBST(node.right);
+
+    return Math.max(left, right) + 1;
+  }
+
+  function minDepthBST(node) {
+    if(!node) return 0;
+
+    if(!node.left && !node.right) return 1;
+    if(node.left && !node.right) return 1 + minDepthBST(node.right);
+    if(!node.left && node.right) return 1 + minDepthBST(node.left);
+
+    if(node.left && node.right) {
+      return 1 + Math.min(minDepthBST(node.left), minDepthBST(node.right));
+    }
+  }
 
 </script>
 </body>
