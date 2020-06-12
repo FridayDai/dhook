@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <script>
   // 算法相关
   // 1. 单链表翻转
@@ -96,27 +97,69 @@
   }
 
   // 回溯法 全排列
-  function permute(arr) {
-    const res = [];
-    const stack = [];
-    const length = arr.length;
+  class backtrace {
+    result = [];
+    framework(track, choose) {
+      if('满足条件') {
+        this.result.push(track);
+        return;
+      }
 
-    function backtrace(res, stack, n) {
-      if(n === length) {
-
+      for(let item in choose) {
+        // 做选择
+        this.framework(track, choose)
+        // 撤销选择
       }
     }
-    backtrace();
-
-
-
   }
 
-  // 动态规划
+  function permute(nums) {
+    const result = [];
+
+    function backtrace(nums, track) {
+      if(track.length === nums.length) {
+        result.push(track);
+        return;
+      }
+
+      for(let i = 0; i < nums.length; i++) {
+        if(track.includes(nums[i])) {
+          continue;
+        }
+        track.push(nums[i]);
+        backtrace(nums, track.slice(0));
+        track.pop(nums[i]);
+      }
+    }
+
+    backtrace(nums, []);
+    return result;
+  }
+
+  // 动态规划 背包问题 todo
+
 
   // 树的遍历 https://github.com/labuladong/fucking-algorithm/blob/master/%E7%AE%97%E6%B3%95%E6%80%9D%E7%BB%B4%E7%B3%BB%E5%88%97/%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E7%9A%84%E9%AB%98%E6%95%88%E6%96%B9%E6%B3%95.md
   // https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E6%93%8D%E4%BD%9C%E9%9B%86%E9%94%A6.md
-  const arr = [6, 7, 8, 9, 1, 2, 3, 4, 5];
+  const tree = {
+    value: 5,
+    left: {
+      value: 4,
+      left: {
+        value: 3
+      }
+    },
+    right: {
+      value: 10,
+      left: {
+        value: 8
+      },
+      right: {
+        value: 11
+      }
+    }
+  };
+
   class Node{
     constructor(value) {
       this.value = value;
@@ -134,14 +177,7 @@
     }
     return node;
   }
-  let tree = null;
-  for(const item of arr) {
-    insertIntoBST(tree, item);
-  }
 
-  const dep1 = minDepthBST(tree);
-  const dep2 = maxDepthBST(tree);
-  console.log(`min: ${dep1}, max: ${dep2}`);
   class TreeFramework {
     node;
 
@@ -155,13 +191,16 @@
     }
 
     traverse2(node) {
+      if(!node) return;
+
       const queue = [];
       queue.push(node);
 
       while(queue.length !== 0) {
         const currentNode = queue.shift();
-        queue.push(currentNode.left);
-        queue.push(currentNode.right);
+
+        currentNode.left && queue.push(currentNode.left);
+        currentNode.right && queue.push(currentNode.right);
       }
     }
 
@@ -222,14 +261,34 @@
   function minDepthBST(node) {
     if(!node) return 0;
 
-    if(!node.left && !node.right) return 1;
-    if(node.left && !node.right) return 1 + minDepthBST(node.right);
-    if(!node.left && node.right) return 1 + minDepthBST(node.left);
+    const leftMin = minDepthBST(node.left);
+    const rightMin = minDepthBST(node.right);
 
-    if(node.left && node.right) {
-      return 1 + Math.min(minDepthBST(node.left), minDepthBST(node.right));
+    if(!node.left || !node.right) {
+      return Math.min()
     }
   }
+
+  function myNew(fn, ...args) {
+    const obj = Object.create(fn.prototype);
+
+    const result = fn.call(obj, ...args);
+    return typeof result === 'object' ? result : obj;
+  }
+
+  // 反转二叉树
+  function reverseBST(node) {
+    if(!node) return;
+    reverseBST(node.left);
+    reverseBST(node.right);
+
+    const temp = node.left;
+    node.left = node.right;
+    node.right = temp;
+  }
+
+  // 最长回文串 todo
+
 
 </script>
 </body>
