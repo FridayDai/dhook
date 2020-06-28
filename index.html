@@ -261,12 +261,16 @@
   function minDepthBST(node) {
     if(!node) return 0;
 
-    const leftMin = minDepthBST(node.left);
-    const rightMin = minDepthBST(node.right);
+    const left = minDepthBST(node.left);
+    const right = minDepthBST(node.right);
 
-    if(!node.left || !node.right) {
-      return Math.min()
+    if(!node.left) {
+      return right + 1;
     }
+    if(!node.right) {
+      return left + 1;
+    }
+    return Math.min(left, right) + 1;
   }
 
   function myNew(fn, ...args) {
@@ -288,6 +292,31 @@
   }
 
   // 最长回文串 todo
+
+
+  //
+  let list = [];
+  function sumList(value, remaining) {
+    if(value < 1 || value > remaining) {
+      return;
+    }
+    if(value === remaining) {
+      list.push(value);
+      console.log('success:', list);
+    } else {
+      list.push(value);
+      sumList(value + 1, remaining - value, list.slice(0));
+    }
+  }
+
+  function min(node) {
+    if(!node) return 0;
+
+    const left = min(node.left);
+    const right = min(node.right);
+
+
+  }
 
 
 </script>
